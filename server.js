@@ -1,30 +1,54 @@
-console.log("web servirni boshlash");
-const express = require("express");
-const http = require('http');
-
+console.log("Hello world!");
+const express = require ("express");
 const app = express();
+const http = require("http");
+const fs = require("fs");
 
-//1: Kirish koddlari
-app.use(express.static("public")); 
-app.use(express.json())
-app.use(express.urlencoded({ externded: true}));
-
-//2: Session bog'liq koddlar
-
-//3  Views coddlar   
-app.set("views", "views");
-app.set("views engine", "ejs");
-
-//4Routing kodlar
-app.get("hello", function (req, res) {c
-   res.end(`<h1 style ="background:red"> HELLO WORLD by bekzodoscor</h1>`);
+let user;
+fs.readFile("database/user.json", "utf8" , (err,data) => {
+  if(err) {
+    console.log("ERROR:", err);
+  } else {
+    user = JSON.parse(data)
+  }
 });
 
-app.get("gift", function (req, res) {c
-    res.end(`<h1 style ="background:red"> Siz savgolar bulimidasiz</h1>`);
- });
+//
+// 1 kirish code
+app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+
+// 2 Session  code
+
+// 3 views ga bogliq codelar
+app.set("views", "views");
+app.set("view engine", "ejs");
+
+// 4 routing  code
+
+app.post("/create-item", (req, res)=>{
+   console.log(req.body);
+   res.json({test: "succes"});
+});
+
+// publishing codelar
+
+app.get('/author', (req, res) =>{
+  res.render("author", {user: user});
+});
+
+
+
+app.get("/", function(req, res){
+  res.render("harid");
+});
+
+
 const server = http.createServer(app);
-let PORT= 3001;
-server.listen(PORT, function () {
-     console.log(`The server is running successfull on port: ${PORT}`);
+let PORT = 3003;
+server.listen(PORT , function () {
+  console.log(`The server is running sucsessfully on port: ${PORT}`);
+
 });
