@@ -1,7 +1,7 @@
 {
-  "name": "plan",
+  "name": "reja-application",
   "version": "1.0.0",
-  "description": "bizning birinchi loyihamiz",
+  "description": "It is my first Project in Node.js ",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,11 +9,13 @@
     "train": "nodemon train.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Edward MIT",
+  "author": "Oscor",
   "license": "ISC",
+  "devDependencies": {
+    "express": "^4.21.1"
+  },
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.21.1",
-    "nodemon": "^3.1.7"
+    "mongodb": "^3.2.6"
   }
 }

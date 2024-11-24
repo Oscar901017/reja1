@@ -1,54 +1,36 @@
-console.log("Hello world!");
-const express = require ("express");
-const app = express();
-const http = require("http");
-const fs = require("fs");
-
-let user;
-fs.readFile("database/user.json", "utf8" , (err,data) => {
-  if(err) {
-    console.log("ERROR:", err);
-  } else {
-    user = JSON.parse(data)
-  }
-});
-
-//
-// 1 kirish code
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-
-
-// 2 Session  code
-
-// 3 views ga bogliq codelar
-app.set("views", "views");
-app.set("view engine", "ejs");
-
-// 4 routing  code
-
-app.post("/create-item", (req, res)=>{
-   console.log(req.body);
-   res.json({test: "succes"});
-});
-
-// publishing codelar
-
-app.get('/author', (req, res) =>{
-  res.render("author", {user: user});
-});
+const http = require('http'); // http bu bizning core modulimiz
+//const app = require ('./app') //app.js da export qilgan modulimizni ozimizga chaqiryapmiz | pastga ko'chirdik databasega errorsiz ulanganan keyn chaqirilishi uchun
+const mongodb = require('mongodb');
+let db;
+//mongoDB connect
+//MOngoDBga ulanib keyin serverni ishga tushirish kerak
+const connectionString = 'mongodb+srv://Oscar:5qZBvVmhpjc5ACpn@cluster0.fjnqv.mongodb.net/reja';
 
 
 
-app.get("/", function(req, res){
-  res.render("harid");
-});
+mongodb.connect(connectionString,
+               {useNewUrlParser: true, 
+                useUnifiedTopology: true,
+
+    }, (err,client) => {  //MongoDbga ulansa mongodb ni cleintini yani instancini olib beradi yani error mavjud bolmasa pass qiladi.
+      if(err) console.log("Error: ON MongoDb connection" );
+      else {
+        console.log("Connected to MongoDB successfully!");
+        //console.log(client); //Mongodb clientni korsa boladi 
+        module.exports = client;// kelajakda clientni kop ishlatamiz shuning uchun biz clientni server.js fayldan export qilib olishimiz kerak. cleintni ichida db degan object bor shuning uchun ham clientni export qilib olamiz 
+        /*biz uchun taxlab berilgan database connection object 
+        client bu qaytgan narsani olib beradi yani error mavjud 
+        bolmasa mongodbdan kelgan narsani olib beradi */
+        const app = require ('./app') //app.js da export qilgan modulimizni ozimizga chaqiryapmiz va shu run bolyapti 
+        // serverni yaratamiz va unga app ni yuklaymiz
+        const server = http.createServer(app); // tuzgan app.jsni require qilyapti serverni 3000 chi portda ishga tushuryapmiz
+        let PORT = 3000;
+        server.listen(PORT, function() { //va 3000 chi portda listen bolyapti 
+            console.log(`The server is running successfully on port: ${PORT},  http://localhost:${PORT}`);
+        });    
+      }
+    });//ikkita narsani true holatda pass qilish kerak
 
 
-const server = http.createServer(app);
-let PORT = 3003;
-server.listen(PORT , function () {
-  console.log(`The server is running sucsessfully on port: ${PORT}`);
 
-});
+ 
