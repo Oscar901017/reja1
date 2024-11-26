@@ -1,3 +1,7 @@
+
+console.log("train task ishga tushdi!");
+
+/*
 // console.log("Jack Ma maslahatlari");
 // const list = [
 //     "yaxshi talaba buling", // 0-20
@@ -94,9 +98,9 @@
 //   console.log(javob);
 // }
 // run(); 
-    
+*/
 
-// A-TASK: 
+/*// A-TASK: 
 
 // Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
 // MASALAN countLetter("e", "engineer") 3ni return qiladi.
@@ -113,6 +117,18 @@
 //     return count;
 // }
 // console.log(countLetter("e", "engineer"));  
+*/
 
+// B-Task
 
+function countDigits(soz) {
+    let javob = 0;
+    for (const i of soz) {
+        if (!isNaN(i)) {
+            javob += 1;
+        }
+    }
+    return javob;
+}
 
+console.log(countDigits("ad2a54y79wet0sfgb9"));
