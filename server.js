@@ -1,7 +1,6 @@
 const http = require('http'); // http bu bizning core modulimiz
 //const app = require ('./app') //app.js da export qilgan modulimizni ozimizga chaqiryapmiz | pastga ko'chirdik databasega errorsiz ulanganan keyn chaqirilishi uchun
 const mongodb = require('mongodb');
-let db;
 //mongoDB connect
 //MOngoDBga ulanib keyin serverni ishga tushirish kerak
 const connectionString = 'mongodb+srv://Oscar:5qZBvVmhpjc5ACpn@cluster0.fjnqv.mongodb.net/reja';

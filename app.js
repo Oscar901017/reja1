@@ -1,19 +1,7 @@
 console.log("Web serverni boshlash");
 const express = require('express');
 const app = express(); // express instance yani bu orqali biz express objectni ishlatamiz
-const http = require('http'); // http bu bizning core modulimiz
-const fs = require('fs');
 
-
-let user;
-//Fake Data Base Server
-fs.readFile("database/user.json","utf8",(err,data)=> {
-    if (err) {
-        console.log("ERROR")
-    }else {
-        user = JSON.parse(data);
-    }
-});
 
 //MongoDB choqirish
 const db = require("./server").db();
