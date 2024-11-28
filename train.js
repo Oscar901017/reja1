@@ -121,14 +121,86 @@ console.log("train task ishga tushdi!");
 
 // B-Task
 
-function countDigits(soz) {
-    let javob = 0;
-    for (const i of soz) {
-        if (!isNaN(i)) {
-            javob += 1;
+// function countDigits(soz) {
+//     let javob = 0;
+//     for (const i of soz) {
+//         if (!isNaN(i)) {
+//             javob += 1;
+//         }
+//     }
+//     return javob;
+// }
+
+// console.log(countDigits("ad2a54y79wet0sfgb9"));
+
+
+
+
+MITASK-C
+
+class Shop {
+ 
+    constructor(non, lagmon, cola) {
+        this.non = non;
+        this.lagmon = lagmon;
+        this.cola = cola;
+    }
+
+    
+    qoldiq() {
+        const currentTime = new Date().toLocaleTimeString(); // Hozirgi vaqtni olish
+        console.log(`Hozir ${currentTime}da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`);
+    }
+
+    
+    sotish(mahsulot, miqdor) {
+        if (mahsulot === 'non') {
+            if (this.non >= miqdor) {
+                this.non -= miqdor;
+                this.logAction('sotish', mahsulot, miqdor);
+            } else {
+                console.log('Yetarli non yo\'q!');
+            }
+        } else if (mahsulot === 'lagmon') {
+            if (this.lagmon >= miqdor) {
+                this.lagmon -= miqdor;
+                this.logAction('sotish', mahsulot, miqdor);
+            } else {
+                console.log('Yetarli lagmon yo\'q!');
+            }
+        } else if (mahsulot === 'cola') {
+            if (this.cola >= miqdor) {
+                this.cola -= miqdor;
+                this.logAction('sotish', mahsulot, miqdor);
+            } else {
+                console.log('Yetarli cola yo\'q!');
+            }
+        } else {
+            console.log('Bunday mahsulot mavjud emas!');
         }
     }
-    return javob;
+
+  
+    qabul(mahsulot, miqdor) {
+        if (mahsulot === 'non') {
+            this.non += miqdor;
+            this.logAction('qabul', mahsulot, miqdor);
+        } else if (mahsulot === 'lagmon') {
+            this.lagmon += miqdor;
+            this.logAction('qabul', mahsulot, miqdor);
+        } else if (mahsulot === 'cola') {
+            this.cola += miqdor;
+            this.logAction('qabul', mahsulot, miqdor);
+        } else {
+            console.log('Bunday mahsulot mavjud emas!');
+        }
+    }
+
+    
+    logAction(amal, mahsulot, miqdor) {
+        const currentTime = new Date().toLocaleTimeString(); // Hozirgi vaqtni olish
+        console.log(`${amal} qilindi: ${mahsulot} ${miqdor}ta. Hozir ${currentTime}da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`);
+    }
 }
 
-console.log(countDigits("ad2a54y79wet0sfgb9"));
+

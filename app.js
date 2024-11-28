@@ -5,6 +5,7 @@ const app = express(); // express instance yani bu orqali biz express objectni i
 
 //MongoDB choqirish
 const db = require("./server").db();
+const new_mongodb = require("mongodb");
 
 // 1 **KIRISH** expressga kirib kelgan codelar yoziladi
 app.use(express.static("public")); // har qanday browserdan kirib kelayotgan zaproslar uchun public folder ochiq degani yani faqat public folderni clientlarga ochib beryapmiz
@@ -33,16 +34,31 @@ console.log("user entered /create-itemgit"); //tepadagi /create-item api ga kirg
         // }
     });
 });
+app.post("/delete-item", (req, res) => {
+    const id = req.body.id;
+    //console.log(id);
+    db.collection("plans").deleteOne( 
+        {_id: new_mongodb.ObjectId(id) }, 
+        function(err,data) {
+            res.json({state: "success"});
+        }
+    )
+   //res.end("done");
+});
 
 app.get('/', function(req, res) {
+    //console.log("STEP2: FronEnd => Backend");
     console.log("user entered /"); //tepadagi / api ga kirganini aytayapti
+    //console.log("STEP3: Backend => Database");
     db.collection('plans').find().toArray((err, data) => {
         if (err) {
             console.log("Error:", err);
             res.status(500).send("Something went wrong");
         } else {
             // console.log(data); 
+            //console.log("STEP4: Database => Backend");
             res.render('reja', {items: data});  // Pass the data to 'reja.ejs'
+            //console.log("STEP5: DONE")
         }
     });
 });
