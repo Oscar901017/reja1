@@ -16,27 +16,23 @@ app.use(express.urlencoded({extended: true})); // buni yozmasak html formdan pos
 app.set("views", "views"); // yani views folderni ichidan o'qiydi
 app.set("view engine", "ejs"); // view engine ejs ligini ko'rsatib beryabmiz, ejs orqali back endni ichida front end yasaymiz
 
-
-
-
 // 4: Routing code
 app.post('/create-item' , (req,res) => {
 console.log("user entered /create-itemgit"); //tepadagi /create-item api ga kirganini aytayapti
- console.log(req.body);
- const new_reja = req.body.reja;
- db.collection('plans').insertOne({reja: new_reja }, (err, data) => {
-    if (err) {
-        console.log("Error:", err);
-        res.end("Something went wrong");
-    } else {
-        res.end("succesfully added");
-    }
- });
+    console.log(req.body);
+    const new_reja = req.body.reja;
+    db.collection('plans').insertOne({reja: new_reja }, (err, data) => {
+        console.log(data.ops); 
+        res.json(data.ops[0]);    
+        
+        // if (err) {
+        //     console.log("Error:", err);
+        //     res.end("Something went wrong");
+        // } else {
+        //     res.end("succesfully added");
+        // }
+    });
 });
-
-app.get('/author', (req,res) => {
-    res.render('author', { user:user});
-})
 
 app.get('/', function(req, res) {
     console.log("user entered /"); //tepadagi / api ga kirganini aytayapti
