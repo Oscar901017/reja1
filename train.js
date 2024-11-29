@@ -198,7 +198,7 @@ class Shop {
 
     
     logAction(amal, mahsulot, miqdor) {
-        const currentTime = new Date().toLocaleTimeString(); // Hozirgi vaqtni olish
+        const currentTime = new Date().toLocaleTimeString(); 
         console.log(`${amal} qilindi: ${mahsulot} ${miqdor}ta. Hozir ${currentTime}da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`);
     }
 }
