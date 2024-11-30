@@ -9,7 +9,7 @@ function itemTemplate(item) {
                         </button> 
                          
                         <button data-id="${item._id}" id="delete-me" class="btn btn-danger btn-sm"> 
-                            Hamma rejalarni O'chirish 
+                             O'chirish 
                         </button> 
                     </div> 
             </li> `
@@ -82,7 +82,7 @@ document.addEventListener("click", function (e) {
 document.getElementById("clean-all").addEventListener("click", function(){
      axios.post("/delete-all", {delete_all: true}).then(response => {
         alert(response.data.state);
-        document.location,reload();
+        document.location.reload();
 
      })
 });

@@ -136,71 +136,83 @@ console.log("train task ishga tushdi!");
 
 
 
-MITASK-C
+// MITASK-C
 
-class Shop {
+// class Shop {
  
-    constructor(non, lagmon, cola) {
-        this.non = non;
-        this.lagmon = lagmon;
-        this.cola = cola;
-    }
+//     constructor(non, lagmon, cola) {
+//         this.non = non;
+//         this.lagmon = lagmon;
+//         this.cola = cola;
+//     }
 
     
-    qoldiq() {
-        const currentTime = new Date().toLocaleTimeString(); // Hozirgi vaqtni olish
-        console.log(`Hozir ${currentTime}da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`);
-    }
+//     qoldiq() {
+//         const currentTime = new Date().toLocaleTimeString(); // Hozirgi vaqtni olish
+//         console.log(`Hozir ${currentTime}da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`);
+//     }
 
     
-    sotish(mahsulot, miqdor) {
-        if (mahsulot === 'non') {
-            if (this.non >= miqdor) {
-                this.non -= miqdor;
-                this.logAction('sotish', mahsulot, miqdor);
-            } else {
-                console.log('Yetarli non yo\'q!');
-            }
-        } else if (mahsulot === 'lagmon') {
-            if (this.lagmon >= miqdor) {
-                this.lagmon -= miqdor;
-                this.logAction('sotish', mahsulot, miqdor);
-            } else {
-                console.log('Yetarli lagmon yo\'q!');
-            }
-        } else if (mahsulot === 'cola') {
-            if (this.cola >= miqdor) {
-                this.cola -= miqdor;
-                this.logAction('sotish', mahsulot, miqdor);
-            } else {
-                console.log('Yetarli cola yo\'q!');
-            }
-        } else {
-            console.log('Bunday mahsulot mavjud emas!');
-        }
-    }
+//     sotish(mahsulot, miqdor) {
+//         if (mahsulot === 'non') {
+//             if (this.non >= miqdor) {
+//                 this.non -= miqdor;
+//                 this.logAction('sotish', mahsulot, miqdor);
+//             } else {
+//                 console.log('Yetarli non yo\'q!');
+//             }
+//         } else if (mahsulot === 'lagmon') {
+//             if (this.lagmon >= miqdor) {
+//                 this.lagmon -= miqdor;
+//                 this.logAction('sotish', mahsulot, miqdor);
+//             } else {
+//                 console.log('Yetarli lagmon yo\'q!');
+//             }
+//         } else if (mahsulot === 'cola') {
+//             if (this.cola >= miqdor) {
+//                 this.cola -= miqdor;
+//                 this.logAction('sotish', mahsulot, miqdor);
+//             } else {
+//                 console.log('Yetarli cola yo\'q!');
+//             }
+//         } else {
+//             console.log('Bunday mahsulot mavjud emas!');
+//         }
+//     }
 
   
-    qabul(mahsulot, miqdor) {
-        if (mahsulot === 'non') {
-            this.non += miqdor;
-            this.logAction('qabul', mahsulot, miqdor);
-        } else if (mahsulot === 'lagmon') {
-            this.lagmon += miqdor;
-            this.logAction('qabul', mahsulot, miqdor);
-        } else if (mahsulot === 'cola') {
-            this.cola += miqdor;
-            this.logAction('qabul', mahsulot, miqdor);
-        } else {
-            console.log('Bunday mahsulot mavjud emas!');
-        }
-    }
+//     qabul(mahsulot, miqdor) {
+//         if (mahsulot === 'non') {
+//             this.non += miqdor;
+//             this.logAction('qabul', mahsulot, miqdor);
+//         } else if (mahsulot === 'lagmon') {
+//             this.lagmon += miqdor;
+//             this.logAction('qabul', mahsulot, miqdor);
+//         } else if (mahsulot === 'cola') {
+//             this.cola += miqdor;
+//             this.logAction('qabul', mahsulot, miqdor);
+//         } else {
+//             console.log('Bunday mahsulot mavjud emas!');
+//         }
+//     }
 
     
-    logAction(amal, mahsulot, miqdor) {
-        const currentTime = new Date().toLocaleTimeString(); 
-        console.log(`${amal} qilindi: ${mahsulot} ${miqdor}ta. Hozir ${currentTime}da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`);
-    }
+//     logAction(amal, mahsulot, miqdor) {
+//         const currentTime = new Date().toLocaleTimeString(); 
+//         console.log(`${amal} qilindi: ${mahsulot} ${miqdor}ta. Hozir ${currentTime}da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`);
+//     }
+// }
+
+D-TASK: 
+
+Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
+MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true
+
+function checkContent(str1, str2) {
+
+    return str1.split('').sort().join('') === str2.split('').sort().join('');
 }
+console.log(checkContent("mitgroup", "gmtiprou"));  // true buladi
+console.log(checkContent("hello", "world"));        // false buladi
 
 
