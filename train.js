@@ -203,16 +203,32 @@ console.log("train task ishga tushdi!");
 //     }
 // }
 
-D-TASK: 
 
-Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
-MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true
 
-function checkContent(str1, str2) {
 
-    return str1.split('').sort().join('') === str2.split('').sort().join('');
+
+
+// D-TASK: 
+
+// Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
+// MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true
+
+// function checkContent(str1, str2) {
+
+//     return str1.split('').sort().join('') === str2.split('').sort().join('');
+// }
+// console.log(checkContent("mitgroup", "gmtiprou"));  // true buladi
+// console.log(checkContent("hello", "world"));        // false buladi
+
+
+
+// E-TASK: 
+
+// Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.
+// MASALAN: getReverse("hello") return qilsin "olleh"
+
+function getReverse(s) {
+    return s.split('').reverse().join('');
 }
-console.log(checkContent("mitgroup", "gmtiprou"));  // true buladi
-console.log(checkContent("hello", "world"));        // false buladi
 
-
+console.log(getReverse("hello")); 

@@ -23,7 +23,7 @@ mongodb.connect(connectionString, {
       const app = require ('./app') //app.js da export qilgan modulimizni ozimizga chaqiryapmiz va shu run bolyapti 
       // serverni yaratamiz va unga app ni yuklaymiz
       const server = http.createServer(app); // tuzgan app.jsni require qilyapti serverni 3000 chi portda ishga tushuryapmiz
-      let PORT = 3000;
+      let PORT = 6007;
       server.listen(PORT, function() { //va 3000 chi portda listen bolyapti 
           console.log(`The server is running successfully on port: ${PORT},  http://localhost:${PORT}`);
       });    
